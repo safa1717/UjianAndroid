@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    int input_umur;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         EditText edNamaDepan = (EditText) findViewById(R.id.edNamaDepan);
         EditText edNamaBelakang = (EditText) findViewById(R.id.edNamaBelakang);
+        EditText edumur = (EditText) findViewById (R.id.edumur);
         Button btnSimpan = (Button) findViewById(R.id.btnSimpan);
 
         ArrayList<String> daftar_nama = new ArrayList<>();
@@ -43,6 +46,18 @@ public class MainActivity extends AppCompatActivity {
                     intent_list.putStringArrayListExtra("daftar_nama", daftar_nama);
                     startActivity(intent_list);
                 }
+
+                input_umur = Integer.parseInt (((EditText) edumur).getText().toString ());
+        if (input_umur<10) {
+            edumur.setText ("Status :anak anak ");
+        }else if (input_umur<20) {
+            edumur.setText ("Status : remaja");
+        }else if (input_umur<40) {
+            edumur.setText ("Status : dewasa ");
+        }else if (input_umur>40){
+            edumur.setText("Status : tua ");
+
+        }
             }
         });
     }
